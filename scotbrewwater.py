@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-from scipy.optimize import minimize
+# from scipy.optimize import minimize
 import matplotlib.pyplot as plt
 
 # -----------------------------
@@ -127,9 +127,9 @@ matrix = np.array([
 def obj(x):
     return np.sum((np.dot(matrix, x) - delta) ** 2)
 
-res = minimize(obj, [0.1]*5, bounds=[(0, None)]*5)
-salts = res.x * total_water
-
+# res = minimize(obj, [0.1]*5, bounds=[(0, None)]*5)
+# salts = res.x * total_water
+salts = np.zeros(5)
 salt_names = ["Gypsum", "Calcium Chloride", "Epsom", "Baking Soda", "Salt"]
 
 st.header("⚖️ Salt Additions")
