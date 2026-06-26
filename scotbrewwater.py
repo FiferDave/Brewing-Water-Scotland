@@ -4,6 +4,8 @@ import pandas as pd
 # from scipy.optimize import minimize
 import matplotlib.pyplot as plt
 
+st.write("✅ App started")
+
 # -----------------------------
 # CONFIG
 # -----------------------------
@@ -19,14 +21,21 @@ def load_scottish():
     df.columns = [c.strip() for c in df.columns]
     return df
 
-@st.cache_data
+# @st.cache_data
 def load_world():
     df = pd.read_excel("worldwide_water_profiles.xlsx", engine="openpyxl")
     df.columns = [c.strip() for c in df.columns]
     return df
 
+st.write("➡️ Loading Scottish data...")
 scot = load_scottish()
+st.write("✅ Scottish loaded")
+st.write(scot.head())
+
+st.write("➡️ Loading World data...")
 world = load_world()
+st.write("✅ World loaded")
+st.write(world.head())
 
 # -----------------------------
 # pH GAUGE
@@ -58,7 +67,7 @@ sparge_water = st.sidebar.number_input("Sparge Water (L)", 0.0, 100.0, 10.0)
 total_water = mash_water + sparge_water
 
 st.sidebar.markdown(f"**Total Water: {total_water:.1f} L**")
-
+st.write("✅ Sidebar loaded")
 # -----------------------------
 # BASE WATER
 # -----------------------------
@@ -82,7 +91,7 @@ st.sidebar.caption(
     f"Ca:{base_Ca:.0f} Mg:{base_Mg:.0f} Na:{base_Na:.0f} "
     f"Cl:{base_Cl:.0f} SO₄:{base_SO4:.0f} HCO₃:{base_HCO3:.0f}"
 )
-
+st.write("✅ Base water section OK")
 # -----------------------------
 # TARGET PROFILE
 # -----------------------------
@@ -107,10 +116,13 @@ st.caption(
     f"Ca:{target_Ca:.0f} Mg:{target_Mg:.0f} Na:{target_Na:.0f} "
     f"Cl:{target_Cl:.0f} SO₄:{target_SO4:.0f}"
 )
-
+st.write("✅ Target profile loaded")
 # -----------------------------
 # SALTS
 # -----------------------------
+
+st.write("➡️ Starting salt calculation...")
+
 base = np.array([base_Ca, base_Mg, base_Na, base_Cl, base_SO4])
 target = np.array([target_Ca, target_Mg, target_Na, target_Cl, target_SO4])
 
