@@ -3,4 +3,3 @@ numpy==1.26.4
 pandas==2.2.2
 matplotlib
 openpyxl
-scipy==1.11.4
