@@ -15,13 +15,13 @@ st.title("🍺 Scottish Brewing Water Calculator")
 # -----------------------------
 @st.cache_data
 def load_scottish():
-    df = pd.read_excel("scottish water profiles for brewing.xlsx", engine="openpyxl")
+    df = pd.read_excel("scottish_water_profiles.xlsx", engine="openpyxl")
     df.columns = [c.strip() for c in df.columns]
     return df
 
 @st.cache_data
 def load_world():
-    df = pd.read_excel("worldwide water profiles.xlsx", engine="openpyxl")
+    df = pd.read_excel("worldwide_water_profiles.xlsx", engine="openpyxl")
     df.columns = [c.strip() for c in df.columns]
     return df
 
